@@ -1,44 +1,32 @@
-import { randomUUID } from 'crypto';
+import 'reflect-metadata';
+import { container } from 'tsyringe';
+import { CreateProductService } from '../services/CreateProductService';
+import { DeleteProductService } from '../services/DeleteProductService';
+import { FindProductService } from '../services/FindProductService';
+import { GetAllProductsService } from '../services/GetAllProductsServices';
+import { UpdateProductService } from '../services/UpdateProductService';
 
-var products = []
+
 
 export const resolvers = {
   Query: {
-    products: () => products,
-    product: (_, {id}) => products.find(p=> p.id === id)
+    products: () => container.resolve(GetAllProductsService).execute(),
+    product: (_, {id}) => container.resolve(FindProductService).execute(id)
   },
 
   Mutation: {
     addProduct: (_, args) => {
-      const product = {
-        id: randomUUID(),
-        name: args.name,
-        price: args.price
-      }
-
-      products.push(product)
-
+      const createProductService = container.resolve(CreateProductService)
+      const product = createProductService.execute(args)
       return product
     },
 
     updateProduct: (_, args) => {
-      const product = products.find(p => p.id === args.id)
-
-      if (!product) {
-        throw new Error('Product does not exit.')
-      }
-
-      if (args.name != undefined) {
-        product.name = args.name
-      }
-
-      if (args.price != undefined) {
-        product.price = args.price
-      }
-
+      const updateProductService = container.resolve(UpdateProductService)
+      const product = updateProductService.execute(args)
       return product
     },
 
-    deleteProduct: (_, {id}) => products = products.filter(p => p.id !== id)
+    deleteProduct: (_, { id }) => container.resolve(DeleteProductService).execute(id),
   }
 }

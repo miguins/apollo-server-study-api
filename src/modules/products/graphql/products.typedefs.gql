@@ -11,6 +11,6 @@ type Query {
 
 type Mutation {
   addProduct(name: String!, price: Float!): Product
-  updateProduct(id: String!, price: Float!): Product
+  updateProduct(id: String!, name: String, price: Float!): Product
   deleteProduct(id: String): [Product]
 }
