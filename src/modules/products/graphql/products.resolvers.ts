@@ -1,24 +1,5 @@
 import { randomUUID } from 'crypto';
 
-export const typeDef = `
-  type Product {
-    id: String!
-    name: String
-    price: Float
-  }
-
-  type Query {
-    products: [Product]
-    product(id: String!): Product
-  }
-
-  type Mutation {
-    addProduct(name: String!, price: Float!): Product
-    updateProduct(id: String!, price: Float!): Product
-    deleteProduct(id: String): [Product]
-  }
-`;
-
 var products = []
 
 export const resolvers = {
@@ -58,6 +39,6 @@ export const resolvers = {
       return product
     },
 
-    deleteProduct: (_, {id}) => products = products.filter(p => p.id === id)
+    deleteProduct: (_, {id}) => products = products.filter(p => p.id !== id)
   }
 }
