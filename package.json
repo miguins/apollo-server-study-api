@@ -1,0 +1,23 @@
+{
+  "name": "apollo-server-study-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --watch 'src/**' --transpile-only --ignore-watch node_modules -r tsconfig-paths/register  src/server.ts "
+  },
+  "author": "Lucas Miguins",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.10.1",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "apollo-server-core": "^3.6.4",
+    "apollo-server-express": "^3.6.4",
+    "express": "^4.17.3",
+    "graphql": "^16.3.0"
+  }
+}
