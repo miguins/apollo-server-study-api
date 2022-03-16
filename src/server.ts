@@ -2,6 +2,9 @@ import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import http from 'http';
+import { resolvers } from 'Schema/resolvers';
+import { typeDefs } from 'Schema/typedef';
+
 
 async function startApolloServer(typeDefs, resolvers) {
   const app = express();
@@ -10,9 +13,12 @@ async function startApolloServer(typeDefs, resolvers) {
     typeDefs,
     resolvers,
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+    // introspection: false
   });
   await server.start();
   server.applyMiddleware({ app });
   await new Promise<void>(resolve => httpServer.listen({ port: 4000 }, resolve));
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 }
+
+startApolloServer(typeDefs, resolvers)
