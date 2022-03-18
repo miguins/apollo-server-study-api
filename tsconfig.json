@@ -2,6 +2,18 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowJs": true,
+    "noImplicitAny": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "removeComments": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "typings/*.d.ts"
+    ],
+    "resolveJsonModule": true,
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -13,5 +25,12 @@
     },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "typings/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

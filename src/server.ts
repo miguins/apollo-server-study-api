@@ -1,15 +1,12 @@
-import { makeExecutableSchema } from '@graphql-tools/schema';
 import { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import http from 'http';
-import resolvers from './resolvers';
-import typeDefs from './typedefs';
+import schema from './schema';
 
-async function startApolloServer(typeDefs, resolvers) {
+async function startApolloServer(schema) {
   const app = express();
   const httpServer = http.createServer(app);
-  const schema = makeExecutableSchema({ typeDefs, resolvers });
 
   const server = new ApolloServer({
     schema,
@@ -25,4 +22,4 @@ async function startApolloServer(typeDefs, resolvers) {
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 }
 
-startApolloServer(typeDefs, resolvers);
+startApolloServer(schema);
