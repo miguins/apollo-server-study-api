@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --watch 'src/**' --transpile-only --ignore-watch node_modules -r tsconfig-paths/register  src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "export NODE_ENV=production && node dist/server.js"
   },
   "author": "Lucas Miguins",
   "license": "MIT",
@@ -22,6 +22,7 @@
     "@graphql-tools/merge": "8.2.4",
     "@graphql-tools/schema": "^8.3.3",
     "@types/node": "^17.0.21",
+    "apollo-server": "^3.6.4",
     "apollo-server-core": "^3.6.4",
     "apollo-server-express": "^3.6.4",
     "express": "^4.17.3",

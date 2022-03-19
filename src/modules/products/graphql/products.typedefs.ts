@@ -1,3 +1,7 @@
+import { gql } from 'apollo-server';
+
+export const productTypeDefs = gql`
+
 type Product {
   id: String!
   name: String
@@ -14,3 +18,6 @@ type Mutation {
   updateProduct(id: String!, name: String, price: Float): Product
   deleteProduct(id: String!): [Product]
 }
+
+
+`;
