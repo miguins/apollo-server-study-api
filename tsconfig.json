@@ -19,10 +19,10 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@modules/*": ["src/modules/*"],
-      "@models/*": ["src/models/*"]
+      "@modules/*": ["./src/modules/*"],
+      "@models/*": ["./src/models/*"]
     },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true

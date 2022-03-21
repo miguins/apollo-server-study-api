@@ -1,0 +1,25 @@
+{
+  "presets": [
+    "@babel/preset-typescript",
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "@modules": "./src/modules",
+        "@models": "./src/models"
+      }
+    }],
+    "babel-plugin-transform-typescript-metadata",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+  ],
+  "ignore": [
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]
+}
