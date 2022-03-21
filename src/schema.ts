@@ -6,7 +6,6 @@ const typeDefs = [
   productTypeDefs
 ]
 
-
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 export default schema;

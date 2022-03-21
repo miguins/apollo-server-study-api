@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --watch 'src/**' --transpile-only --ignore-watch node_modules -r tsconfig-paths/register  src/server.ts",
     "build": "tsc",
-    "start": "export NODE_ENV=production && node dist/server.js"
+    "start": "node dist/server.js",
+    "start:prod": "export NODE_ENV=production && node dist/server.js"
   },
   "author": "Lucas Miguins",
   "license": "MIT",
