@@ -6,7 +6,7 @@ import { FindProductService } from '../services/FindProductService';
 import { GetAllProductsService } from '../services/GetAllProductsServices';
 import { UpdateProductService } from '../services/UpdateProductService';
 
-export const resolvers = {
+export const productsResolvers = {
   Query: {
     products: () => container.resolve(GetAllProductsService).execute(),
     product: (_, {id}) => container.resolve(FindProductService).execute(id)

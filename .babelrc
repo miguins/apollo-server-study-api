@@ -15,8 +15,9 @@
         "@models": "./src/models"
       }
     }],
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
     "babel-plugin-transform-typescript-metadata",
-    ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    "graphql-tag"
   ],
   "ignore": [
     "**/*.test.ts",

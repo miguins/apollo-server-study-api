@@ -2,16 +2,14 @@ import { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageDisable
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import http from 'http';
-import { resolvers } from './modules/products/graphql/products.resolvers';
-import { typeDefs } from './schema';
+import schema from './schema';
 
-async function startApolloServer(typeDefs, resolvers) {
+async function startApolloServer(schema) {
   const app = express();
   const httpServer = http.createServer(app);
 
   const server = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schema,
     plugins: [
       ApolloServerPluginDrainHttpServer({ httpServer }),
       process.env.NODE_ENV === 'production' ? ApolloServerPluginLandingPageDisabled : ApolloServerPluginLandingPageLocalDefault,
@@ -24,4 +22,4 @@ async function startApolloServer(typeDefs, resolvers) {
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
 }
 
-startApolloServer(typeDefs, resolvers);
+startApolloServer(schema);
