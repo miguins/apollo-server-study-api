@@ -1,4 +1,4 @@
-import { Product } from '@models/Product';
+import { Product } from 'models/Product';
 import { injectable } from 'tsyringe';
 import { fakeProducts as products } from '../FakeProducts';
 
