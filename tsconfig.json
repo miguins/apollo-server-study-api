@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "types": ["node", "jest"],
     "moduleResolution": "node",
     "sourceMap": true,
     "allowJs": true,
@@ -20,8 +21,8 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
-      "@modules/*": ["modules/*"],
-      "@models/*": ["models/*"]
+      "@modules/*": ["src/modules/*"],
+      "@models/*": ["src/models/*"]
     },
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
