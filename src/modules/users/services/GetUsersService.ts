@@ -1,15 +1,12 @@
 import { User } from '@models/User';
-import 'reflect-metadata';
-import { container, injectable } from 'tsyringe';
-import { MockApiUsersClient } from '../integration/MockApiUsersClient';
+import { IUsersApiClient } from '../external-services/IUsersApiClient';
 
-@injectable()
 export class GetUsersService {
 
-  async execute(): Promise<User[]> {
-    const usersClientResponse = container.resolve(MockApiUsersClient)
-    const users = usersClientResponse.getUsers()
+  constructor(private mockApiUsersClient: IUsersApiClient) {}
 
+  async execute(): Promise<User[]> {
+    const users = await this.mockApiUsersClient.getUsers()
     return users
   }
 }

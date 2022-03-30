@@ -1,10 +1,11 @@
-import { container } from 'tsyringe';
+import { MockApiUsersClient } from '../external-services/mock-api/MockApiUsersClient';
 import { GetUsersService } from '../services/GetUsersService';
 
 export const usersResolvers = {
   Query: {
     users: () => {
-      const getUsersService = container.resolve(GetUsersService)
+      const usersApi = new MockApiUsersClient()
+      const getUsersService = new GetUsersService(usersApi)
       const users = getUsersService.execute()
 
       return users
