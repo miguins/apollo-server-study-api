@@ -10,7 +10,7 @@ export class DeleteProductService {
       throw new Error('Product does not exist.')
     }
 
-    products.splice(productIndex)
+    products.splice(productIndex, 1);
 
     return products
   }

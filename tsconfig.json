@@ -21,6 +21,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
+      "@src/*": ["./src/*"],
       "@modules/*": ["./src/modules/*"],
       "@models/*": ["./src/models/*"]
     },
@@ -31,6 +32,7 @@
     "src/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist"
   ]
 }
