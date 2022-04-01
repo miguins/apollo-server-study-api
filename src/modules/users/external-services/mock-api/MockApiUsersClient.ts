@@ -4,12 +4,11 @@ import { IUsersApiClient } from '../IUsersApiClient';
 
 export class MockApiUsersClient implements IUsersApiClient {
 
-  private BASE_URL: string = 'https://6243482a39aae3e3b7413750.mockapi.io/api';
-  private RESOURCE: string = '/users'
+  baseUrl: string = 'https://6243482a39aae3e3b7413750.mockapi.io/api';
 
   async getUsers(): Promise<User[]> {
     try {
-      const response = await axios.get<User[]>(`${this.BASE_URL}${this.RESOURCE}`);
+      const response = await axios.get<User[]>(`${this.baseUrl}/users`);
       return response.data
     } catch (error) {
       throw new Error(error)

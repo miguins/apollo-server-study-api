@@ -1,11 +1,11 @@
-import { MockApiUsersClient } from '../external-services/mock-api/MockApiUsersClient';
+import "reflect-metadata";
+import { container } from 'tsyringe';
 import { GetUsersService } from '../services/GetUsersService';
 
 export const usersResolvers = {
   Query: {
     users: () => {
-      const usersApi = new MockApiUsersClient()
-      const getUsersService = new GetUsersService(usersApi)
+      const getUsersService = container.resolve(GetUsersService);
       const users = getUsersService.execute()
 
       return users
