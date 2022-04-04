@@ -2,6 +2,7 @@ import { ApolloServerPluginDrainHttpServer, ApolloServerPluginLandingPageDisable
 import { ApolloServer } from 'apollo-server-express';
 import express from 'express';
 import http from 'http';
+import 'reflect-metadata';
 import schema from './schema';
 
 async function startApolloServer(schema) {

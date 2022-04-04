@@ -1,6 +1,17 @@
 type Product {
   id: String!
-  name: String
+  name: String!
+  price: Float!
+}
+
+input NewProductInput {
+  name: String!
+  price: Float!
+}
+
+input UpdateProductInput {
+  id: String!,
+  name: String,
   price: Float
 }
 
@@ -10,7 +21,7 @@ type Query {
 }
 
 type Mutation {
-  addProduct(name: String!, price: Float!): Product
-  updateProduct(id: String!, name: String, price: Float): Product
+  addProduct(input: NewProductInput): Product!
+  updateProduct(input: UpdateProductInput): Product!
   deleteProduct(id: String!): [Product]
 }
