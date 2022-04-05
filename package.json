@@ -8,7 +8,8 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/server.js",
     "start:prod": "export NODE_ENV=production && node dist/server.js",
-    "test": "jest"
+    "test": "jest --updateSnapshot",
+    "test:watch": "jest --updateSnapshot --watchAll"
   },
   "author": "Lucas Miguins",
   "license": "MIT",

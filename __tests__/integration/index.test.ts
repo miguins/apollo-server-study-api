@@ -3,17 +3,32 @@ import resolvers from '@src/resolvers';
 import typeDefs from '@src/schema';
 import { ApolloServer } from 'apollo-server-express';
 
-it('returns a list of products', async () => {
+describe('Apollo Server', () => {
 
-  const testServer = new ApolloServer({
-    typeDefs,
-    resolvers
+  let testServer: ApolloServer;
+
+  beforeAll(() => {
+    testServer = new ApolloServer({ typeDefs, resolvers });
   });
 
-  const result = await testServer.executeOperation({
-    query: 'query Products { products { id,name,price } }'
+  it('should execute query operation', async () => {
+    const result = await testServer.executeOperation({
+      query: 'query Products { products { id,name,price } }'
+    });
+
+    expect(result.errors).toBeUndefined();
+    expect(result.data).toBeDefined();
+    expect(result).toMatchSnapshot();
   });
 
-  expect(result.errors).toBeUndefined();
-  expect(result.data?.products[0].name).toBe('Product 1');
+  it('should not execute query operation', async () => {
+
+    const result = await testServer.executeOperation({
+      query: 'query { products { } }'
+    });
+
+    expect(result.errors).toBeDefined();
+    expect(result.data).toBeUndefined();
+    expect(result).toMatchSnapshot();
+  });
 });
