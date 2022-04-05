@@ -1,7 +1,7 @@
-import axios from 'axios';
 import "reflect-metadata";
+import axios from 'axios';
 import { container } from 'tsyringe';
-import { GetUsersService } from './../../../../src/modules/users/services/GetUsersService';
+import { GetUsersService } from '@modules/users/services/GetUsersService';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
