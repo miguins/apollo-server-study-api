@@ -1,30 +1,29 @@
 import "reflect-metadata";
 import axios from 'axios';
-import { container } from 'tsyringe';
-import { GetUsersService } from '@modules/users/services/GetUsersService';
+import { usersResolvers } from '@modules/users/graphql/users.resolvers';
 
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-test('mockApi should return a list os users', async () => {
+describe('Users resolvers', () => {
+  test('should return a list os users', async () => {
 
-  mockedAxios.get.mockResolvedValue(mockedListResponse);
+    mockedAxios.get.mockResolvedValue(mockedListResponse);
 
-  const getUsersService = container.resolve(GetUsersService);
-  const users = await getUsersService.execute();
+    const response = await usersResolvers.Query.users();
 
-  expect(users).toBe(mockedListResponse.data);
-});
+    expect(response).toBe(mockedListResponse.data);
+    expect(response).toHaveLength(1);
+  });
+})
 
 const mockedListResponse = {
-  data: {
-    users: [
+  data: [
       {
         id: "1",
         name: "Christine Borer",
         phone: "(529) 373-4587",
         email: "Geovanny.McGlynn@yahoo.com"
       }
-    ]
-  }
+  ]
 };
